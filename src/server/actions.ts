@@ -1,23 +1,23 @@
 "use server";
 
-import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+import { getServerAuthSession } from "~/server/auth";
 import { db } from "~/server/db";
 import { posts } from "~/server/db/schema";
 
 export async function createPost(name: string) {
-  const user = auth();
+  const session = await getServerAuthSession();
 
-  if (!user.userId) throw new Error("Unauthorized");
+  if (!session?.user) throw new Error("Unauthorized");
 
   const post = await db
     .insert(posts)
     .values({
       name,
-      userId: user.userId,
+      userId: session.user.id,
     })
     .returning({ id: posts.id })
     .then((res) => res[0]);
@@ -28,9 +28,9 @@ export async function createPost(name: string) {
 }
 
 export async function deletePost(id: number) {
-  const user = auth();
+  const session = await getServerAuthSession();
 
-  if (!user.userId) throw new Error("Unauthorized");
+  if (!session?.user.id) throw new Error("Unauthorized");
 
   const post = await db.query.posts.findFirst({
     columns: {
@@ -39,7 +39,7 @@ export async function deletePost(id: number) {
     where: (model, { eq }) => eq(model.id, id),
   });
 
-  if (user.userId !== post?.userId) throw new Error("Unauthorized");
+  if (session.user.id !== post?.userId) throw new Error("Unauthorized");
 
   await db.delete(posts).where(eq(posts.id, id));
 

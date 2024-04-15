@@ -1,6 +1,6 @@
-import { auth } from "@clerk/nextjs/server";
 import { notFound } from "next/navigation";
 
+import { getServerAuthSession } from "~/server/auth";
 import { getPost } from "~/server/queries";
 import { DeletePostButton } from "../../_components/delete-post-button";
 import { PostCard } from "../../_components/post-card";
@@ -17,12 +17,12 @@ export default async function PostPage({
     notFound();
   }
 
-  const user = auth();
+  const session = await getServerAuthSession();
 
   return (
     <div className="container flex flex-col gap-4 py-8">
       <PostCard {...post} />
-      {user.userId === post.userId && <DeletePostButton postId={postId} />}
+      {session?.user.id === post.userId && <DeletePostButton postId={postId} />}
     </div>
   );
 }

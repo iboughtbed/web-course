@@ -1,7 +1,5 @@
 import "~/styles/globals.css";
 
-import { ClerkProvider } from "@clerk/nextjs";
-import { dark } from "@clerk/themes";
 import { Inter } from "next/font/google";
 
 import { Toaster as Sonner } from "~/components/ui/sonner";
@@ -24,18 +22,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider appearance={{ baseTheme: dark }}>
-      <html lang="en">
-        <body
-          className={cn(
-            "dark min-h-screen bg-background font-sans antialiased",
-            inter.variable,
-          )}
-        >
-          {children}
-          <Sonner richColors />
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body
+        className={cn(
+          "dark min-h-screen bg-background font-sans antialiased",
+          inter.variable,
+        )}
+      >
+        {children}
+        <Sonner richColors />
+      </body>
+    </html>
   );
 }

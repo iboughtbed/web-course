@@ -13,7 +13,7 @@ export function PostCard({ id, name, createdAt }: PostCardProps) {
       className="space-y-2 rounded-md border px-4 py-3"
     >
       <p>{name}</p>
-      <p className="text-muted-foreground text-sm">
+      <p className="text-sm text-muted-foreground">
         {createdAt.toDateString()}
       </p>
     </Link>

@@ -1,9 +1,16 @@
-import { authMiddleware } from "@clerk/nextjs";
+import { withAuth } from "next-auth/middleware";
+import { NextResponse } from "next/server";
 
-export default authMiddleware({
-  publicRoutes: ["/", "/post/:path*"],
+export default withAuth(function middleware(req) {
+  const token = req.nextauth.token;
+  const url = new URL(req.nextUrl.origin);
+
+  if (!token?.sub) {
+    url.pathname = "/";
+    return NextResponse.redirect(url);
+  }
 });
 
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: ["/new/:path*"],
 };

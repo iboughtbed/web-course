@@ -8,5 +8,5 @@ export default {
   dbCredentials: {
     connectionString: env.POSTGRES_URL,
   },
-  tablesFilter: ["web-course_*"],
+  tablesFilter: ["web-course-next-auth_*"],
 } satisfies Config;
