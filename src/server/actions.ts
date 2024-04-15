@@ -29,7 +29,7 @@ export async function createPost(name: string) {
 
 export async function deletePost(id: number) {
   const user = auth();
-  
+
   if (!user.userId) throw new Error("Unauthorized");
 
   const post = await db.query.posts.findFirst({

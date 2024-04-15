@@ -5,7 +5,7 @@ import { Button, buttonVariants } from "~/components/ui/button";
 
 export function SiteHeader() {
   return (
-    <header className="bg-background sticky top-0 z-50 w-full border-b">
+    <header className="sticky top-0 z-50 w-full border-b bg-background">
       <div className="container flex h-14 items-center">
         <div className="mr-4 flex">
           <Link href="/">
