@@ -17,7 +17,6 @@ This is an open source web course build with everything new in Next.js 14. It is
 ## Features to be implemented
 
 - [x] Authentication with **Clerk**
-- [x] File uploads with **uploadthing**
 - [x] ORM using **Drizzle ORM**
 - [x] Database on **Vercel**
 - [x] Validation with **Zod**
