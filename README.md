@@ -10,14 +10,13 @@ This is an open source web course build with everything new in Next.js 14. It is
 
 - **Framework:** [Next.js](https://nextjs.org)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com)
-- **User Management:** [Clerk](https://clerk.com)
+- **User Management:** [NextAuth](https://next-auth.js.org)
 - **ORM:** [Drizzle ORM](https://orm.drizzle.team)
 - **UI Components:** [shadcn/ui](https://ui.shadcn.com)
 
 ## Features to be implemented
 
-- [x] Authentication with **Clerk**
-- [x] File uploads with **uploadthing**
+- [x] Authentication with **NextAuth**
 - [x] ORM using **Drizzle ORM**
 - [x] Database on **Vercel**
 - [x] Validation with **Zod**
