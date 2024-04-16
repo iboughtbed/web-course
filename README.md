@@ -21,6 +21,7 @@ This is an open source web course build with everything new in Next.js 14. It is
 - [x] Database on **Vercel**
 - [x] Validation with **Zod**
 - [x] Post pages: "/", "/new", "/post/[postId]"
+- [x] Markdown editor
 - [ ] File uploads with **uploadthing**
 
 ## Running Locally
